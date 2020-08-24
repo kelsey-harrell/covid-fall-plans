@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+		    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+		<title>University COVID-19 fall plans</title>
+			<style>
+				html, body {
+					height: 100%;
+					margin: 0;
+				}
+				#map {
+					width: 100%;
+					height: 100%;
+				}
+			</style>
+	</head>
+	<body>
+
+<div id='map'></div>
+
+<script>
+	var map = L.map('map').setView([42.713955826286046, -86.580078125], 5);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJjazVzbzgwdnowcHp2M2VtanNsemFybm53In0.mcW15QN53dKi4J1gKoJKyQ'
+}).addTo(map);
+
+	var LeafIcon = L.Icon.extend({
+		options: {
+			iconSize: [20, 20],
+			iconAnchor: [16, 16],
+			popupAnchor: [-8, -20]
+		}
+	});
+
+	var uiIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		michIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		uniIcon = new LeafIcon ({iconUrl: 'univ.svg'}),
+		isuIcon = new LeafIcon ({iconUrl: 'univ.svg'}),
+		purdueIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		uwmadIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		osuIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		nebIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		pennIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		msuIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		minnIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		illIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		indIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		maryIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		nwestIcon = new LeafIcon({iconUrl: 'univ.svg'}),
+		rutIcon = new LeafIcon({iconUrl: 'univ.svg'});
+
+	L.marker([41.66060124302088, -91.53602600097656,], {icon: uiIcon}).bindPopup("<b>University of Iowa</b>: The UI will require face coverings to be worn in university buildings and outside when social distancing is difficult. The university is providing personal protective equipment kits with reusable cloth face masks, disposable face masks, a face shield, and hand sanitizer. The UI is having students self-report if they've tested positive for COVID-19 or are experiencing symptoms. <a href='https://coronavirus.uiowa.edu/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([42.0239, -93.6476,], {icon: isuIcon}).bindPopup("<b>Iowa State University</b>: ISU is requiring face coverings inside university buildings and outdoors when around other people. The university announced it will invest about $3 million into cleaning and disinfecting efforts on campus. ISU tested students upon their return to living in the residence halls and will continue to test students as the semester progresses. <a href='https://web.iastate.edu/safety/updates/covid19/planning'>Read more about the plans here.</a>").addTo(map);
+	L.marker([42.5134, -92.4625,], {icon: uniIcon}).bindPopup("<b>University of Northern Iowa</b>: UNI is requiring face coverings to be worn in all university buildings; students, faculty, and staff will be provided two masks and a face shield. Students, faculty, and staff will be required to complete a daily health survey before leaving their dorm or arriving on campus. <a href='https://forwardtogether.uni.edu/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([40.4240, -86.9290,], {icon: purdueIcon}).bindPopup("<b>Purdue University</b>: Purdue will require students to be tested for COVID-19 prior to their arrival to the residence halls or for classes. Face masks, social distancing, and robust personal hygiene will be required for those on campus.  <a href='https://protect.purdue.edu/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([42.29407210639585, -83.7103271484375,], {icon: michIcon}).bindPopup("<b>University of Michigan</b>: Michigan is offering fall classes the formats of in-person, a hybrid mix of in-person and remote, and remote. Face Coverings are required on the Michigan campuses. Students living on campus are required to be tested for COVID-19 and cleared before arriving on campus and students are expected to observe a 14-day enhanced social distancing before coming to campus. <a href='https://campusblueprint.umich.edu/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([43.0704, -89.4035,], {icon: uwmadIcon}).bindPopup("<b>University of Wisconsin-Madison</b>: Wisconsin will offer classes in-person until Thanksgiving break, after which all classes will be delivered in a virtual format. Face masks and social distancing will be required on campus and new cleaning procedures will be adopted. The university will implement a three-step testing plan including on campus testing centers, surveillance testing, and targeted testing. <a href='https://smartrestart.wisc.edu/plan/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([39.999260, -83.014824,], {icon: osuIcon}).bindPopup("<b>Ohio State University</b>: Ohio State is requiring masks to be worn inside and outside on campus, even when social distancing. Personal protective equipment kits are also being distributed to students. The university has mandatory testing for students living in the residence halls upon move-in, mandatory weekly testing for students living in residence halls or university-managed housing, and testing of random samples of asymptomatic students living off campus. <a href='https://safeandhealthy.osu.edu/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([40.824340820, -96.662666321,], {icon: nebIcon}).bindPopup("<b>University of Nebraska-Lincoln</b>: Nebraska started classes remotely on Aug. 17 and in person classes will begin on Aug. 24. Students are expected to observe social distancing and wear masks when they arrive on campus. Students are required to complete a COVID-19 training before coming to campus. <a href='https://covid19.unl.edu/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([40.796036, -77.862739,], {icon: pennIcon}).bindPopup("<b>Penn State University</b>: Penn State students are required to self-quarantine for seven days before returning to campus. Those coming to campus from coronavirus &#34hotspots&#34 will be required to take a pre-arrival test. Individuals experiencing COVID-19 symptoms will be tested. The university will also be conducting surveillance testing of faculty, staff, and students throughout the semester and plan to test 1 percent of the campus population a day. <a href='https://virusinfo.psu.edu/?utm_source=banner&utm_medium=homeandnews&utm_campaign=virusinfo/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([42.723387, -84.481366,], {icon: msuIcon}).bindPopup("<b>Michigan State University</b>: Michigan State moved the fall semester online on Aug. 18 and asked students planning on living in residence halls to stay home. The university will work for two weeks to transition classes offered in-person or in a hybrid format to be remote. <a href='https://president.msu.edu/communications/messages-statements/2020_community_letters/2020-08-18-plans-change.html'>Read more about the plans here.</a>").addTo(map);
+	L.marker([44.9718, -93.2338,], {icon: minnIcon}).bindPopup("<b>University of Minnesota</b>: The University of Minnesota distributed personal protective equipment to students and asks them to be prepared to wear masks inside university buildings and outdoors when maintaining social distancing is difficult. The university will provide testing for individuals who are symptomatic or have been exposed to someone with COVID-19. <a href='https://safe-campus.umn.edu/return-campus/university-planning-response'>Read more about the plans here.</a>").addTo(map);
+	L.marker([40.106322908, -88.2237124385,], {icon: illIcon}).bindPopup("<b>University of Illinois Urbana-Champaign</b>: The University of Illinois Urbana-Champaign is requiring students to complete a COVID-19 training and watch a return to campus briefing before their arrival on campus. Students will be tested when they arrive on campus and will be tested twice a week while classes are in session. The university will also distribute personal protective equipment to students. <a href='https://covid19.illinois.edu/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([39.167322, -86.521414,], {icon: indIcon}).bindPopup("<b>Indiana University Bloomington</b>: Indiana is requiring all students, regardless of if they live on campus or off campus, to be tested for COVID-19 upon their arrival. The university is requiring masks on campus and those not wearing one in public spaces may be asked to leave. <a href='https://www.indiana.edu/guides/current-students.html'>Read more about the plans here.</a>").addTo(map);
+	L.marker([38.9858, -76.9373,], {icon: maryIcon}).bindPopup("<b>University of Maryland</b>: The University of Maryland students, faculty, and staff are required to take a COVID-19 test 14 days prior to arriving on campus. Students, faculty, and staff are required to provide the university with confirmation of their negative test results. Those who test positive will need to stay home and cleared by their healthcare provider before they can return to campus. Face masks are required on campus indoors and outdoors when social distancing is difficult. <a href='https://president.umd.edu/articles/new-covid-19-campus-dashboard-free-testing-campus'>Read more about the plans here.</a>").addTo(map);
+	L.marker([42.054853, -87.673945,], {icon: nwestIcon}).bindPopup("<b>Northwestern University</b>: Northwestern University is following a six-step return to campus plan, it is currently in Step Four: Summer Stabilization. The university will have a three-step testing process for students. The first step will be requiring them to take an at-home test, the second will require them to be tested upon their arrival on campus, and the third will regularly test students living on campus. <a href='https://www.northwestern.edu/coronavirus-covid-19-updates/'>Read more about the plans here.</a>").addTo(map);
+	L.marker([40.7416, -74.1749,], {icon: rutIcon}).bindPopup("<b>Rutgers University</b>: Rutgers University is conducting a targeted testing approach based on the risk of COVID-19 spread to identify groups to be tested. Rutgers is offering testing for those not displaying symptoms and those who are. Face coverings are required on campus and masks with exhaust vents are not allowed. <a href='https://coronavirus.rutgers.edu/'>Read more about the plans here.</a>").addTo(map);
+</script>
+
+
+
+</body>
+</html>
